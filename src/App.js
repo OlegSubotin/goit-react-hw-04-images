@@ -22,14 +22,9 @@ function App (){
   useEffect(() => {
     if (topic === '') {
       return;
-    };
-
-    pushFetch();
-    
-  }, [page, topic]);
-
-  function pushFetch () {
+    };  
     setStatus('pending');
+
     fetchImages(topic, page)
       .then(resp => {
         const images = resp.hits.map(({ id, largeImageURL, webformatURL }) => ({ id, largeImageURL, webformatURL, }));
@@ -41,7 +36,8 @@ function App (){
         setError(error);
         setStatus('rejected');
       });
-  }; 
+    
+  }, [page, topic]);
 
   function handleFormSubmit(query) {
     if (topic === query) {
@@ -132,7 +128,7 @@ export default App;
   //     this.setState({ status: 'pending' });
   //     this.pushFetch();
   //   };
-  // }; 
+  // };
 
   // pushFetch = () => {
   //   const { topic, page } = this.state;
