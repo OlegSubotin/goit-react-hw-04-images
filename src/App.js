@@ -41,7 +41,7 @@ function App (){
 
   function handleFormSubmit(query) {
     if (topic === query) {
-      Notiflix.Notify.info('You have been looking at them');
+      Notiflix.Notify.info('You are looking at them');
       return;
     } else {
       setImages([]);
@@ -76,17 +76,13 @@ function App (){
         <Button onClick={onLoadMoreButtonClick} />
       )}
       {status === 'pending' && <Loader />}
-      {status === 'rejected' && Notiflix.Notify.info('Try other topic')}
+      {status === 'rejected' && Notiflix.Notify.info(`Try other topic ${error}`)}
       {showModal && <Modal onClose={toggleModal} largeImage={largeImage} />}
     </>
   );
 };
 
 export default App;
-
-
-
-
 
 
 
